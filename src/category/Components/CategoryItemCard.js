@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import classNames from 'classnames';
+import { withRouter } from 'react-router-dom';
 
 const styles = {
     card: {
@@ -73,7 +74,7 @@ function CategoryItemCard(props) {
     else if (value === 4) { url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1qD2Y5sZohWwL_0LfVVqCCHOhcSP1xgDTRG32IeNxSfemliRD" }
 
     return (
-        <Card className={classes.card}>
+        <Card className={classes.card} onClick={()=>props.history.push("/detail")}>
             <CardActionArea>
                 <CardMedia
                     className={classes.media}
@@ -113,6 +114,6 @@ CategoryItemCard.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(CategoryItemCard);
+export default withRouter(withStyles(styles)(CategoryItemCard));
 
 
