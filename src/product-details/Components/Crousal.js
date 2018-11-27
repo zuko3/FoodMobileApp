@@ -8,7 +8,7 @@ class Crousal extends Component {
             dots: true,
             lazyLoad: true,
             infinite: true,
-            speed: 500,
+            speed: 400,
             slidesToShow: 1,
             slidesToScroll: 1,
             initialSlide: 2
