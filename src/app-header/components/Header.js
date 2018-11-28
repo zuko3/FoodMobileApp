@@ -11,6 +11,8 @@ import SwipeableDrawer from "../../nav-drawer/components/SwipeableDrawer";
 import FullScreenDialog from "../../auth-form/Main";
 import { withRouter } from 'react-router-dom';
 import ArrowBack from '@material-ui/icons/ArrowBack';
+import ShoppingCartOutlined from '@material-ui/icons/ShoppingCartOutlined';
+import Badge from '@material-ui/core/Badge';
 
 const styles = {
     root: {
@@ -25,7 +27,8 @@ const styles = {
         marginRight: 20,
     },
     Profile: {
-        fontSize: '1.7rem'
+        fontSize: '1.7rem',
+        marginLeft:25
     },
 };
 
@@ -58,7 +61,7 @@ class Header extends React.Component {
     }
 
     getHeaderTitle = () => {
-        const { location: { pathname }, history } = this.props;
+        const { location: { pathname } } = this.props;
         switch (pathname) {
             case "/":
                 return "Foods";
@@ -66,8 +69,15 @@ class Header extends React.Component {
                 return "Products List";
             case "/detail":
                 return "Details";
+            case "/cart":
+                return "My Cart";
             default:
         }
+    }
+
+    goToCart = () => {
+        const {  history } = this.props;
+        history.push("/cart");
     }
 
     render() {
@@ -80,6 +90,9 @@ class Header extends React.Component {
                         <Typography variant="h6" color="inherit" className={classes.grow}>
                             {this.getHeaderTitle()}
                         </Typography>
+                        <Badge className={classes.margin} badgeContent={3} color="secondary">
+                            <ShoppingCartOutlined className={classes.Profile} onClick={this.goToCart} />
+                        </Badge>
                         <PersonOutlineOutlined className={classes.Profile} onClick={this.toggleAuthSplash} />
                     </Toolbar>
                 </AppBar>
